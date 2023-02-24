@@ -1,3 +1,4 @@
+import math
 def getCompareHotelReport(mtrHotel, rlHotel):
     mtrVillasList = mtrHotel['villasData']
     rlVillasList = rlHotel['villasData']
@@ -13,18 +14,21 @@ def getCompareHotelReport(mtrHotel, rlHotel):
                 for mtrMeal in mtrVilla['meals']:
 
                     reportString += '\t\t\t\tmeal: ' + mtrMeal['mealName']
-
                     for rlMeal in rlVilla['meals']:
                         if mtrMeal['mealName'] == rlMeal['mealName']:
-                            if float(mtrMeal['mealPrice']) == float(rlMeal['mealPrice']):
+                            if (int(mtrMeal['mealPrice']) == int(round(float(rlMeal['mealPrice'])))
+                                    or (float(mtrMeal['mealPrice']) - round(float(rlMeal['mealPrice'])) == 1)):
+                                pass
                                 reportString += ' - OK\n'
                             else:
+
+
                                 reportString += '\n\t\t\t\t\t\t' + \
                                                 'Price mismatch:' + \
                                                 '\n\t\t\t\t\t\t\t\t' + \
                                                 'MTR price: ' + str(mtrMeal['mealPrice']) + \
                                                 '\n\t\t\t\t\t\t\t\t' + \
-                                                'ResortLife price: ' + str(rlMeal['mealPrice']) + '\n'
+                                                'ResortLife price: ' + str(round(float(rlMeal['mealPrice']))) + '\n'
                             break
                 break
 

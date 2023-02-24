@@ -3,7 +3,7 @@ from getRLhotels import getRLprices
 from hotelCompare import getCompareHotelReport
 
 dateslist = [
-    ['1', '01/03/2023', '02/03/2023', '1', '0']
+    ['1', '29/09/2023', '16/10/2023', '2', '1']
 ]
 
 for selectedDate in dateslist:
@@ -12,7 +12,7 @@ for selectedDate in dateslist:
     endDate = selectedDate[2]
     guestAdult = selectedDate[3]
     guestChildren = selectedDate[4]
-    childAgeList = []
+    childAgeList = ["6"]
 
     OUTPUT_LOG_PATH = f"./logs/price-log-{guestAdult}-adults-{guestChildren}-children-{startDate.replace('/', '-')}-{endDate.replace('/', '-')}.txt "
 
